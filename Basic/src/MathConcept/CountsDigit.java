@@ -2,7 +2,7 @@ package MathConcept;
 
 public class CountsDigit {
 public static void main(String[] args) {
-int no=7898;
+int no=7898; 
 System.out.println(count(no));
 
 
