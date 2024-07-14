@@ -1,15 +1,112 @@
 package MathConcept;
 
+import java.util.ArrayList;
+
 public class CountsDigit {
 public static void main(String[] args) {
-int no=2;  
-System.out.println(count2(no));
+
+
+int number = 9;
+
+/*System.out.println(count2(no));
 System.out.println();
 System.out.println(reverse(no));
 System.out.println(palindrome(no));
 System.out.println();
 
 System.out.println(armstrong(no));
+*/
+
+int checkPrimeResult=checkprime(number);
+if(checkPrimeResult==2) 
+	System.out.println(true);
+else 
+	System.out.println(false);
+ArrayList<Integer> divisors = findDivisors(number);
+
+System.out.print("Divisors of " + number + " are: ");
+for (int divisor : divisors) {
+    System.out.print(divisor + " ");
+}
+System.out.println();
+}
+
+public static int checkprime(int n) {
+    // Initialize an empty
+    // ArrayList to store the divisors
+int cnt=0;
+    // Iterate up to the square
+    // root of n to find divisors
+    // Calculate the square root of n
+    int sqrtN = (int) Math.sqrt(n);
+
+    // Loop from 1 to the
+    // square root of n
+    for (int i = 1; i <= sqrtN; ++i) {
+        // Check if i divides n
+        // without leaving a remainder
+        if (n % i == 0) {
+            // Add divisor i to the list
+           cnt++;
+
+            // Add the counterpart divisor
+            // if it's different from i
+            if (i != n / i) {
+            	cnt++;
+                // Add the counterpart
+                // divisor to the list
+            }
+        }
+    }
+
+    // Return the list of divisors
+    return cnt;
+}
+
+ public static ArrayList<Integer> findDivisors(int n) {
+    // Initialize an empty
+    // ArrayList to store the divisors
+    ArrayList<Integer> divisors = new ArrayList<>();
+
+    // Iterate up to the square
+    // root of n to find divisors
+    // Calculate the square root of n
+    int sqrtN = (int) Math.sqrt(n);
+
+    // Loop from 1 to the
+    // square root of n
+    for (int i = 1; i <= sqrtN; ++i) {
+        // Check if i divides n
+        // without leaving a remainder
+        if (n % i == 0) {
+            // Add divisor i to the list
+            divisors.add(i);
+
+            // Add the counterpart divisor
+            // if it's different from i
+            if (i != n / i) {
+                // Add the counterpart
+                // divisor to the list
+                divisors.add(n / i);
+            }
+        }
+    }
+
+    // Return the list of divisors
+    return divisors;
+}
+private static int[] printDivisors(int n, int[] size) {
+	// TODO Auto-generated method stub
+	int [] divisors=new int[n];
+	int count=0;
+	for(int i=1;i<=n;i++) {
+		if(n%i==0)
+			divisors[count++]=i;
+	
+	}
+	size[0] = count;
+	
+	return divisors;
 }
 
 public static boolean armstrong(int n) {
